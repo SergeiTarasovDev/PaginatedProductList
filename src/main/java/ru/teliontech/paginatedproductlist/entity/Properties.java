@@ -6,14 +6,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class ProductProperties {
+public class Properties {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
 
-    @ManyToMany(mappedBy = "productPropertiesSet")
-    private Set<ProductType> productTypeSet = new HashSet<>();
+    @ManyToMany(mappedBy = "propertySet")
+    private Set<Product> productSet = new HashSet<>();
 
 }

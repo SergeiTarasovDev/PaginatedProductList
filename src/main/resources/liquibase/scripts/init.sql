@@ -3,20 +3,19 @@
 -- changeset starasov:1
 CREATE TABLE product
 (
-    id              serial         primary key,
-    name            varchar(50)    not null,
+    id              serial          primary key,
+    name            varchar(80)     not null,
     price           decimal,
-    product_type_id int         not null
+    type_id         int             not null
 );
 
-
-CREATE TABLE product_properties
+CREATE TABLE properties
 (
     id      serial          primary key,
     name    varchar(30)     not null
 );
 
-CREATE TABLE product_type
+CREATE TABLE type
 (
     id      serial          primary key,
     name    varchar(30)     not null
@@ -24,7 +23,15 @@ CREATE TABLE product_type
 
 CREATE TABLE type_properties
 (
-    id                      serial  primary key,
-    product_properties_id   int,
-    type_properties_id      int
+    id              serial  primary key,
+    type_id         int     not null,
+    properties_id   int     not null
+);
+
+CREATE TABLE product_properties
+(
+    id              serial  primary key,
+    product_id      int     not null,
+    property_id     int     not null,
+    property_value  varchar(70)
 );
