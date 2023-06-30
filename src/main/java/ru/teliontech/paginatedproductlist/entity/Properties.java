@@ -1,11 +1,13 @@
 package ru.teliontech.paginatedproductlist.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Data
 public class Properties {
 
     @Id
@@ -13,7 +15,10 @@ public class Properties {
     private Integer id;
     private String name;
 
-    @ManyToMany(mappedBy = "propertySet")
+    @OneToMany(mappedBy = "product")
     private Set<Product> productSet = new HashSet<>();
+
+//    @ManyToMany(mappedBy = "propertySet")
+//    private Set<Product> productSet = new HashSet<>();
 
 }
